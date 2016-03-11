@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from django.contrib import admin
 
+from . import views
+
 urlpatterns = [
-    url(r'^$', "playcode.views.home"),
+    url(r'^$', views.home),
 ]
