@@ -13,9 +13,9 @@
  <div class="container">
    <h2>CodePlay</h2>
    <p>Select Language, Type Code and Play Code.</p>
-   <form>
+   <form id=codeplay-form>
      <fieldset class="form-group">
-       <label for="exampleSelect1">Select Language</label>
+       <label for="lang">Select Language</label>
        <select class="form-control" id="exampleSelect1">
          <option value=C selected="selected">C (gcc 4.8.4)</option>
          <option value=CPP>C++ (g++ 4.8.4)</option>
@@ -41,7 +41,7 @@
        </select>
      </fieldset>
      <fieldset class="form-group">
-       <label for="exampleTextarea">Code</label>
+       <label for="code-form">Code</label>
        <textarea class="form-control" id="exampleTextarea" rows="10"></textarea>
      </fieldset>
      <button type="submit" class="btn btn-primary">PlayCode</button>
@@ -49,4 +49,19 @@
  </div>
 
  </body>
+
+<script type="text/javascript">
+    $(document).on('submit', '#codeplay', function(e){
+      e.preventDefault();
+
+      $.ajax({
+        type: 'POST',
+        url:'',
+        data
+      }
+
+    }
+
+
+
  </html>
