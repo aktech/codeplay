@@ -1,12 +1,52 @@
-<html>
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <title>CodePlay</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ </head>
+ <body>
 
-<body>
- <h1> Hello CodePlay! </h1>
- <form action="/your-name/" method="post">
-     {% csrf_token %}
-     {{ form }}
-     <input type="submit" value="Submit" />
- </form>
-</body>
+ <div class="container">
+   <h2>CodePlay</h2>
+   <p>Select Language, Type Code and Play Code.</p>
+   <form>
+     <fieldset class="form-group">
+       <label for="exampleSelect1">Select Language</label>
+       <select class="form-control" id="exampleSelect1">
+         <option value=C selected="selected">C (gcc 4.8.4)</option>
+         <option value=CPP>C++ (g++ 4.8.4)</option>
+         <option value=CLOJURE>Clojure (clojure 1.4.0)</option>
+         <option value=CSS>CSS</option>
+         <option value=CSHARP>C# (mono 3.2.8)</option>
+         <option value=GO>Go (go 1.4.2)</option>
+         <option value=HASKELL>Haskell (ghc 7.6.3)</option>
+         <option value=HTML>HTML</option>
+         <option value=JAVA>Java (openjdk 1.7.0_09)</option>
+         <option value=JAVASCRIPT>JavaScript (Rhino 1.7)</option>
+         <option value=JAVASCRIPT_NODE>JavaScript (Node.js 0.10.25)</option>
+         <option value=LISP>Lisp (csc 4.8.0.5)</option>
+         <option value=OBJECTIVEC>Objective-C (clang 3.3)</option>
+         <option value=PASCAL>Pascal (fpc 2.6.2)</option>
+         <option value=PERL>Perl (perl 5.18.2)</option>
+         <option value=PHP>PHP (php 5.5.9)</option>
+         <option value=PYTHON>Python (python 2.7.6)</option>
+         <option value=RUBY>Ruby (ruby 2.1.1)</option>
+         <option value=R>R (RScript 3.0.2)</option>
+         <option value=RUST>Rust (rustc 1.4.0)</option>
+         <option value=SCALA>Scala (scalac 2.9.2)</option>
+       </select>
+     </fieldset>
+     <fieldset class="form-group">
+       <label for="exampleTextarea">Code</label>
+       <textarea class="form-control" id="exampleTextarea" rows="10"></textarea>
+     </fieldset>
+     <button type="submit" class="btn btn-primary">PlayCode</button>
+   </form>
+ </div>
 
-</html>
+ </body>
+ </html>
