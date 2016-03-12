@@ -13,8 +13,6 @@ def home(request):
     if request.method == 'POST':
         # POST goes here . is_ajax is must to capture ajax requests.
         if request.is_ajax():
-            # Always use get on request.POST.
-            # Correct way of querying a QueryDict.
             lang = request.POST.get('lang')
             source = request.POST.get('source')
             data = {"lang": lang, "source": source}
@@ -30,12 +28,6 @@ def home(request):
 
             # Post data to HackerEarth API
             r = requests.post(RUN_URL, data=data)
-            # r = requests.post(COMPILE_URL, data=data)
-            print(r.json())
-
-            # Returning output data back to browser.
-            # It is not possible with Normal submit
             return JsonResponse(r.json(), safe=False)
-            # return JsonResponse(data)
     # Get goes here
     return render(request, 'home.html')
