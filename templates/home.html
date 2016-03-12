@@ -65,6 +65,10 @@
     <thead>
       <tr>
         <th>Output</th>
+        <th>Errors</th>
+        <th>Compile Status</th>
+        <th>Time (sec)</th>
+        <th>Memory (KB)</th>
       </tr>
     </thead>
     <tbody>
@@ -118,28 +122,29 @@ function getCookie(name) {
            source : source
            }, // data sent with the post request
 
-           // handle a successful response
-          //  success : function(json) {
-          //    console.log(json); // another sanity check
-          //    // On success show the data returned by the server as a message
-          //    alert('Lang: '+json['lang'] + ' Code: '+ json['source'] + ' Output: '+ json['run_status']['output']);
-          //  },
-
-          // Display JSON data in table: START
-          success: function(data){
-              if(data){
-                  var len = data.length;
+          success: function(json){
+              if(json){
                   var txt = "";
-                  // if(len > 0){
-                      //for(var i=0;i<len;i++){
-                          //if(data[i].city && data[i].cStatus){
-                              txt += "<tr><td>"+data['run_status']['output']+"</td></tr>";
-                          //}
-                      //}
-                      if(txt != ""){
-                          $("#table").append(txt).removeClass("hidden");
-                      }
-                  // }
+
+                  // Output
+                  if(json['run_status']['output']){ txt += "<tr><td>"+json['run_status']['output']+"</td>";}
+                  else {txt += "<tr><td>"+ 'NA' +"</td>";}
+                  // Errors
+                  if(json['errors']){ txt += "<td>"+json['errors']+"</td>";}
+                  else {txt += "<td>"+ 'NA' +"</td>";}
+                  // Compile Status
+                  if(json['compile_status']){ txt += "<td>"+json['compile_status']+"</td>";}
+                  else {txt += "<td>"+ 'NA' +"</td>";}
+                  // Time used
+                  if(json['run_status']['time_used']){ txt += "<td>"+json['run_status']['time_used']+"</td>";}
+                  else {txt += "<td>"+ 'NA' +"</td>";}
+                  // Memory used
+                  if(json['run_status']['memory_used']){ txt += "<td>"+json['run_status']['memory_used']+"</td></tr>";}
+                  else {txt += "<td>"+ 'NA' +"</td></tr>";}
+
+                  if(txt != ""){
+                    $("#table").append(txt).removeClass("hidden");
+                  }
               }
           },
           // Display JSON data in table: END
