@@ -5,7 +5,6 @@ from django.http import JsonResponse
 import requests
 
 # Constants
-COMPILE_URL = u"https://api.hackerearth.com/v3/code/compile/"
 RUN_URL = u'https://api.hackerearth.com/v3/code/run/'
 CLIENT_SECRET = 'cd70993ac2dbee9e7c7b2c533a104a7d621632fa'
 
