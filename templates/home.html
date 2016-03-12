@@ -13,7 +13,6 @@
 
  <div class="container">
    <h2>CodePlay</h2>
-   <p>Select Language, Type Code and Play Code.</p>
      <form class="lang" method="POST">
           {% csrf_token %}
 
@@ -52,6 +51,31 @@
        <button type="submit" id="submit" class="btn btn-primary">PlayCode</button>
      </form>
  </div>
+ <br>
+
+<!--OUTPUT TABLE-->
+ <!-- <table id="table" class="hidden">
+     <tr>
+         <th>Output</th>
+     </tr>
+ </table> -->
+
+ <div class="container">
+  <table class="table table-striped hidden" id="table">
+    <thead>
+      <tr>
+        <th>Output</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr>
+        <td>John</td>
+      </tr> -->
+    </tbody>
+  </table>
+</div>
+
+<!--OUTPUT TABLE: END -->
 
  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
  <script>
@@ -79,10 +103,9 @@ function getCookie(name) {
 
    e.preventDefault();
    var csrftoken = getCookie('csrftoken');
-  //  var lang = $('#lang').val();
-  var e = document.getElementById("lang");
-  var lang = e.options[e.selectedIndex].value;
-
+   //  var lang = $('#lang').val();
+   var e = document.getElementById("lang");
+   var lang = e.options[e.selectedIndex].value;
    var source = $('#source').val();
 
 //This is the Ajax post.Observe carefully. It is nothing but details of where_to_post,what_to_post
@@ -96,11 +119,30 @@ function getCookie(name) {
            }, // data sent with the post request
 
            // handle a successful response
-           success : function(json) {
-             console.log(json); // another sanity check
-             //On success show the data posted to server as a message
-             alert('Hi '+json['lang'] +'!.' + ' You have entered password:'+      json['source']);
-           },
+          //  success : function(json) {
+          //    console.log(json); // another sanity check
+          //    // On success show the data returned by the server as a message
+          //    alert('Lang: '+json['lang'] + ' Code: '+ json['source'] + ' Output: '+ json['run_status']['output']);
+          //  },
+
+          // Display JSON data in table: START
+          success: function(data){
+              if(data){
+                  var len = data.length;
+                  var txt = "";
+                  // if(len > 0){
+                      //for(var i=0;i<len;i++){
+                          //if(data[i].city && data[i].cStatus){
+                              txt += "<tr><td>"+data['run_status']['output']+"</td></tr>";
+                          //}
+                      //}
+                      if(txt != ""){
+                          $("#table").append(txt).removeClass("hidden");
+                      }
+                  // }
+              }
+          },
+          // Display JSON data in table: END
 
            // handle a non-successful response
            error : function(xhr,errmsg,err) {
