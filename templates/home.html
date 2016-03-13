@@ -103,6 +103,13 @@
 
 <!--Output Table: END -->
 
+<style>
+  mark {
+      background-color: #e67676;
+      color: white;
+  }
+</style>
+
  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
  <script>
 
@@ -153,10 +160,11 @@ function getCookie(name) {
                   if(json['run_status']['output']){ txt += "<tr><td>"+json['run_status']['output']+"</td>";}
                   else {txt += "<tr><td>"+ 'NA' +"</td>";}
                   // Errors
-                  if(json['errors']){ txt += "<td>"+json['errors']+"</td>";}
+                  if(json['errors']){ txt += "<td>" + "<mark>" +json['errors']+ "</mark>" + "</td>";}
                   else {txt += "<td>"+ 'NA' +"</td>";}
                   // Compile Status
-                  if(json['compile_status']){ txt += "<td>"+json['compile_status']+"</td>";}
+                  if(json['compile_status'] != "OK"){ txt += "<td>"+ "<mark>" +json['compile_status']+ "</mark>" +"</td>";}
+                  else if(json['compile_status'] == "OK"){ txt += "<td>" +json['compile_status']+ "</td>";}
                   else {txt += "<td>"+ 'NA' +"</td>";}
                   // Time used
                   if(json['run_status']['time_used']){ txt += "<td>"+json['run_status']['time_used']+"</td>";}
