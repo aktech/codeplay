@@ -13,7 +13,12 @@
 
  <body>
 
-   
+   <script>
+   	function eraseText() {
+    document.getElementById("output").value = "";
+    }
+   </script>
+
    <div class="card-panel teal lighten-2">This is a card panel with a teal lighten-2 class</div>
             
    <!-- Fixed navbar -->
@@ -83,14 +88,18 @@
           <fieldset class="form-group">
             <label for="code-form">Code</label>
             <textarea class="form-control" id="source" rows="10"></textarea>
+            
           </fieldset>
 
        <button type="submit" id="submit" class="waves-effect waves-light btn">PlayCode</button>
+       <button value="Clear" class="waves-effect waves-light btn" onclick="javascript:eraseText();">Reset</button>
+       
+
        
      </form>
  </div>
  <br>
-
+  <img src="Bryan-Cranston-Breaking-Bad1.jpg">
 <!--Output Table: Start-->
 
  <div class="container">
@@ -196,6 +205,6 @@ function getCookie(name) {
   });
 
 </script>
-
+ 
 </body>
 </html>
